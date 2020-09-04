@@ -5,8 +5,9 @@ Olá eu criei esse shell script para facilitar minha vida, sempre que tem um upd
 
 <br>
 <p align="center">
-  <img width="922" height="455" src=assets/install_droidcam.gif">
+  <img width="460" height="300" src="assets/install_droidcam.gif">
 </p>
+
 <br><br>
 ---
 >*OBS: Esse shellscript é apenas um projeto pessoal de fim de tarde use por sua conta e risco.*
