@@ -11,7 +11,12 @@
   <img width="460" height="300" src="assets/install_droidcam.gif">
 </p>
 
+
 <br><br>
+
+<em>Fonte:
+[Droidcam](https://www.dev47apps.com/droidcam/linux/) </em>
+
 
 ---
 >*OBS: Esse shellscript é apenas um projeto pessoal de fim de tarde use por sua conta e risco.*
