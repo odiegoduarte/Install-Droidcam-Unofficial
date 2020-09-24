@@ -11,11 +11,16 @@
   <img width="460" height="300" src="assets/install_droidcam.gif">
 </p>
 
-
 <br><br>
 
-<em>Fonte:
-[Droidcam](https://www.dev47apps.com/droidcam/linux/) </em>
+### Referências
+
+- [Droidcam](https://www.dev47apps.com/droidcam/linux/)
+- [Operações básicas de gestão de pacotes.](https://www.debian.org/doc/manuals/debian-reference/ch02.pt.html#_basic_package_management_operations)
+- [Ubuntu Manpage apt command-line interface.](https://manpages.ubuntu.com/manpages/focal/man8/apt.8.html)
+- [Whiptail.](https://en.wikibooks.org/wiki/Bash_Shell_Scripting/)
+
+<br>
 
 
 ---
