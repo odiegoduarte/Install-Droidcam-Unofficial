@@ -30,7 +30,10 @@ echo "73db3a4c0f52a285b6ac1f8c43d5b4c7 droidcam_latest.zip" | md5sum -c --
 
 #Extraindo e instalando o Droidcam
 unzip droidcam_latest.zip -d droidcam && cd droidcam
-sudo ./install
+sudo ./install-client
+
+sudo apt install linux-headers-`uname -r` gcc make
+sudo ./install-video
 
 #Instalando adb para usar o Droidcam via cabo usb.
 sudo apt-get install adb -y
