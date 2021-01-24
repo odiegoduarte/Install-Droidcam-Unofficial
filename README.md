@@ -1,7 +1,7 @@
 <br>
 
 <p align="center">
-  <img width="922" height="257" src="images/installdroidcamunofficial.png">
+  <img width="922" height="257" src="assets/installdroidcamunofficial.png">
 </p>
 
 <br>
