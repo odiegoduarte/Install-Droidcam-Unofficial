@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Criado por Diego Duarte 2020
+# Criado por Diego Duarte 2021
 # https://github.com/odiegoduarte/Install-Droidcam-Unofficial
 # Esse Shell Script foi criado para remover a versão antiga do droidcam baixar a última versão oficial
 # do site e instalar o droidcam.
@@ -20,15 +20,56 @@ else
     echo "Instalação do Droidcam.$6 "
 fi
 
-#Removendo versões anteriores
+
+function print_centered {
+     [[ $# == 0 ]] && return 1
+
+     declare -i TERM_COLS="$(tput cols)"
+     declare -i str_len="${#1}"
+     [[ $str_len -ge $TERM_COLS ]] && {
+          echo "$1";
+          return 0;
+     }
+
+     declare -i filler_len="$(( (TERM_COLS - str_len) / 2 ))"
+     [[ $# -ge 2 ]] && ch="${2:0:1}" || ch=" "
+     filler=""
+     for (( i = 0; i < filler_len; i++ )); do
+          filler="${filler}${ch}"
+     done
+
+     printf "%s%s%s" "$filler" "$1" "$filler"
+     [[ $(( (TERM_COLS - str_len) % 2 )) -ne 0 ]] && printf "%s" "${ch}"
+     printf "\n"
+
+     return 0
+}
+
+
 sudo /opt/droidcam-uninstall
 
-#Baixando Droidcam
+print_centered "-"  "-" 
+print_centered "Removendo versões anteriores"
+print_centered "-"  "-" 
+
+echo -e
+
+print_centered "-"  "-" 
+print_centered "Baixando nova versão do Droidcam"
+print_centered "-"  "-" 
+
+echo -e
+
 cd /tmp/
 wget https://files.dev47apps.net/linux/droidcam_latest.zip
 echo "73db3a4c0f52a285b6ac1f8c43d5b4c7 droidcam_latest.zip" | md5sum -c --
 
-#Extraindo e instalando o Droidcam
+print_centered "-"  "-" 
+print_centered "Instalando Droidcam"
+print_centered "-"  "-" 
+
+echo -e
+
 unzip droidcam_latest.zip -d droidcam && cd droidcam
 sudo ./install-client
 
@@ -38,4 +79,12 @@ sudo ./install-video
 #Instalando adb para usar o Droidcam via cabo usb.
 sudo apt-get install adb -y
 
-echo "Instalação finalizada !"
+echo -e
+
+print_centered "-"  "-" 
+print_centered "Instalação finalizada !"
+print_centered "-"  "-" 
+
+
+
+#read
