@@ -6,16 +6,15 @@
 
 <br>
 
-<p>Olá eu criei esse shell script para facilitar minha vida, sempre que tem update do kernel do sistema o droidcam pede para que eu faça o update, ai eu sempre tinha que ir no site do dev usar o comando para remover depois outro comando para baixar e por fim o comando para instalar o droidcam.</p>
-<p>Acabei criando um shell script que remove a versão antiga baixa a última versão e faz a instalação automática com um click.</p>
+<p>Olá, esse shell script baixa a ultima versão do Droidcam e faz a intalação automática, testei no Mint 20.3 e Pop!_OS 22.04 LTS.
 
-<br><br>
+<br>
 
 <p align="center">
-  <img width="460" height="300" src="assets/install_droidcam.gif">
+  <img width="868" height="" src="assets/screenshot.png">
 </p>
 
-<br><br>
+<br>
 
 ### Referências
 
@@ -27,6 +26,10 @@
 - [Ubuntu Beginners/BashScripting](https://help.ubuntu.com/community/Beginners/BashScripting)
 - [Introdução à programação Shell](http://www.faqs.org/docs/air/tsshell.html)
 - [Programando em shell script](http://www.devin.com.br/shell_script/)
+- [Shell Scripting Tutorial](https://www.shellscript.sh/)
+- [Bash Reference Manual](https://devdocs.io/bash/)
+- [Dialog --tudo](https://aurelio.net/shell/dialog/)
+- [Dialog](https://invisible-island.net/dialog/#synopsis)
 
 <br>
 
