@@ -6,7 +6,7 @@
 
 <br>
 
-<p>Olá, esse shell script baixa a ultima versão do Droidcam e faz a intalação automática, testei no Mint 20.3 e Pop!_OS 22.04 LTS.
+<p>Olá, este script em shell foi desenvolvido para baixar a versão mais recente do Droidcam e realizar sua instalação automática. Ele foi testado com sucesso no Mint 21.2 LTS e no Pop!_OS 22.04 LTS.
 
 <br>
 
@@ -35,4 +35,4 @@
 
 
 ---
->*OBS: Esse shellscript é apenas um projeto pessoal de fim de tarde use por sua conta e risco.*
+> *OBS: Esse shellscript é apenas um projeto pessoal de fim de tarde use por sua conta e risco.*

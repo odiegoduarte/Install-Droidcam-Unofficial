@@ -2,37 +2,34 @@
 #
 # droidcam_install.sh - Instala Ddroidcam direto da fonte.
 #
-# Autor:      Diego Duarte 2020 -2022
+# Autor:      Diego Duarte 2020 -2023
 # Projeto:    https://github.com/odiegoduarte/Install-Droidcam-Unofficial
 #
 # ------------------------------------------------------------------------ #
 #
-#  Esse Shell Script foi criado para remover a versão antiga do droidcam 
-#       baixar a última versão oficial do site e instalar o droidcam.
+#             Este script em shell foi criado para facilitar 
+#       a instalação,instalação, atualização e remoção do DroidCam
+#      Este script em shell realiza o download diretamente da fonte.  
 #
 # ------------------------------------------------------------------------ #
 
 function print_centered {
      [[ $# == 0 ]] && return 1
-
-     declare -i TERM_COLS="$(tput cols)"
+     declare -i TERM_COLS="$(($(tput cols)))"
      declare -i str_len="${#1}"
      [[ $str_len -ge $TERM_COLS ]] && {
           echo "$1";
           return 0;
      }
-
      declare -i filler_len="$(( (TERM_COLS - str_len) / 2 ))"
      [[ $# -ge 2 ]] && ch="${2:0:1}" || ch=" "
      filler=""
      for (( i = 0; i < filler_len; i++ )); do
           filler="${filler}${ch}"
      done
-
      printf "%s%s%s" "$filler" "$1" "$filler"
      [[ $(( (TERM_COLS - str_len) % 2 )) -ne 0 ]] && printf "%s" "${ch}"
      printf "\n"
-
      return 0
 }
 
@@ -48,7 +45,7 @@ whiptail ...
         sleep 0.1
         echo $i
     done
-} | whiptail --gauge " Iniciando o instalador Droidcam " 7 60 0
+} | whiptail --gauge " Iniciando o instalador Droidcam Unofficial " 7 60 0
 
 HEIGHT=17
 WIDTH=50
@@ -59,8 +56,9 @@ MENU="Escolha uma das seguintes opções:"
 
 OPTIONS=(
          1 "Instalar Droidcam"
-         2 "Reinstalar Droidcam"
-         3 "Sair"
+         2  "Reinstalar Droidcam"
+         3 "Desinstalar Droidcam"
+         4 "Sair"
          )
 
 CHOICE=$(dialog --clear \
@@ -75,44 +73,6 @@ clear
 case $CHOICE in
 
  1)
-
- print_centered "-" "-"
- print_centered "> > > Baixando Droidcam < < <"
- 
- echo
- 
- cd /tmp/
- wget -O droidcam_latest.zip https://files.dev47apps.net/linux/droidcam_1.8.2.zip  -q --show-progress
- 
- echo 
- 
- print_centered "-" "-"
- print_centered "Instalando . . . "
- 
- echo
- 
- unzip droidcam_latest.zip -d droidcam && cd droidcam
- sudo ./install-client
- 
- sudo apt install linux-headers-`uname -r` gcc make
- sudo ./install-video
- 
- # Opcional usar o droicam via cabo USB
- #sudo apt-get install adb -y
- 
- echo 
- 
- print_centered "-" "-"
- 
- echo
-
- dialog --title 'Finalizado' --msgbox '  Instalação do Droidcam finalizada com sucesso!' 5 51
-
- ;; 
-
-# ------------------------------------------------------------------------ #
- 2)
- 
  echo
  print_centered "-" "-"
  print_centered "Removendo versão anterior."
@@ -128,9 +88,9 @@ case $CHOICE in
  
  echo
  
- cd /tmp/
- wget -O droidcam_latest.zip https://files.dev47apps.net/linux/droidcam_1.8.2.zip  -q --show-progress
- 
+ cd /tmp/ || exit
+ wget -O droidcam_latest.zip https://files.dev47apps.net/linux/droidcam_2.0.0.zip  -q --show-progress
+
  echo 
  
  print_centered "-" "-"
@@ -138,15 +98,81 @@ case $CHOICE in
  
  echo
  
- unzip droidcam_latest.zip -d droidcam && cd droidcam
+ unzip droidcam_latest.zip -d droidcam && cd droidcam || exit
  sudo ./install-client
  
- sudo apt install linux-headers-`uname -r` gcc make
+ sudo apt install "linux-headers-$(uname -r)" gcc make
  sudo ./install-video
-
+ 
  # Opcional usar o droicam via cabo USB
  #sudo apt-get install adb -y
  
+ echo 
+ 
+ print_centered "-" "-"
+ 
+ echo
+
+ dialog --title 'Finalizado' --msgbox 'Instalação do Droidcam finalizada com sucesso!' 5 51
+
+ ;; 
+# ------------------------------------------------------------------------ #
+ 2)
+ echo
+ print_centered "-" "-"
+ print_centered "Removendo versão anterior."
+ 
+ echo
+ 
+ sudo /opt/droidcam-uninstall
+  
+ echo
+
+ print_centered "-" "-"
+ print_centered "> > > Baixando Droidcam < < <"
+ 
+ echo
+ 
+ cd /tmp/ || exit
+ wget -O droidcam_latest.zip https://files.dev47apps.net/linux/droidcam_2.0.0.zip  -q --show-progress
+
+ echo 
+ 
+ print_centered "-" "-"
+ print_centered "Instalando . . . "
+ 
+ echo
+ 
+ unzip droidcam_latest.zip -d droidcam && cd droidcam || exit
+ sudo ./install-client
+ 
+ sudo apt install "linux-headers-$(uname -r)" gcc make
+ sudo ./install-video
+ 
+ # Opcional usar o droicam via cabo USB
+ #sudo apt-get install adb -y
+ 
+ echo 
+ 
+ print_centered "-" "-"
+ 
+ echo
+
+ dialog --title 'Finalizado' --msgbox 'Instalação do Droidcam finalizada com sucesso!' 5 51
+
+ ;; 
+
+# ------------------------------------------------------------------------ #
+ 3)
+ 
+ echo
+ print_centered "-" "-"
+ print_centered " Desinstalando Droidcam." 
+ 
+ echo
+ 
+ sudo /opt/droidcam-uninstall
+
  echo 
  
  print_centered "-" "-"
@@ -159,7 +185,7 @@ case $CHOICE in
 
 # ------------------------------------------------------------------------ #
 
- 3)
+ 4)
  exit
  ;;
  esac
